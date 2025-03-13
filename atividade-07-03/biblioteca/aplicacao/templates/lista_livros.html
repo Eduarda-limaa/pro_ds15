@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Resultado das buscas:</h1>
+
+    <form method="get" action="{% url 'buscar_livros' %}">
+        <label for="titulo">Titulo:</label>
+        <input type="text" name="titulo" id="titulo" value="{{ request.GET.titulo }}">
+
+        <label for="autor">Autor:</label>
+        <input type="text" name="autor" id="autor" value="{{ request.GET.autor}}">
+
+        <label for="ano">Ano:</label>
+        <input type="text" name="ano" id="ano" value="{{ request.GET.ano }}">
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <ul>
+        {% for livro in livros  %}
+            <li>{{livro.titulo}} - {{livro.autor}} - {{livro.ano}}</li>
+        {%empty%}
+            <li>name1 livro encontrado.</li>
+        {%endfor%}
+    </ul>
+
+
+</body>
+</html>
