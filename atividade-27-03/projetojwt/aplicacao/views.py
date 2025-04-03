@@ -51,6 +51,8 @@ def logar(request):
         return Response({"Erro": "Digite o usuario e senha correta!!"}, status=status.HTTP_401_UNAUTHORIZED)
     
 @api_view(['GET'])
-@permission_classes({IsAuthenticated})
+@permission_classes([IsAuthenticated])
 def view_protegida(request):
     return Response({"Mensagem": "Olá ds15"}, status=status.HTTP_200_OK)
+
+
