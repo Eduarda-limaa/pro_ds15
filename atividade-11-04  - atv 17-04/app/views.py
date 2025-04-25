@@ -39,4 +39,4 @@ class AniversarianteRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     lookup_field= 'pk'
 
 class LoginView(TokenObtainPairView):
-    serializers_class= ObterTokenSerializer
+    serializer_class= LoginSerializer

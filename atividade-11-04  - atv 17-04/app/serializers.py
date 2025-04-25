@@ -15,14 +15,15 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class LoginSerializer(TokenObtainPairSerializer):
+    
     def validate(self, attrs):
         data= super().validate(attrs)
-
         data['usuario'] = {
             'username': self.user.username,
-            'email': self.user.email, 
-            'foto': self.user.foto_perfil
+            'email': self.user.email
         }
+        return data
+    
 
 # class ObterTokenSerializer(serializers.Serializer):
 #     username= serializers.CharField()
