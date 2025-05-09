@@ -7,13 +7,35 @@ class UsuarioSerializer(serializers.ModelSerializer):
         model = Usuario
         fields= '__all__'
 
+    def create(self, validated_data):
+       usuario = Usuario.objects.create_user(
+           username=validated_data['username'],
+           categoria=validated_data['categoria'],
+           ni=validated_data['ni'],
+           telefone= validated_data['telefone'],
+           password= validated_data['password']
+       )
+       return usuario
+
+    def update(self, instance, validated_data):
+        salvar_senha= validated_data.pop('password', None)
+
+        for chave, valor in validated_data.items():
+            setattr(instance, chave, valor)
+        
+        instance.set_password(salvar_senha)
+        instance.save()
+        return instance
+
 class DisciplinaSerializer(serializers.ModelSerializer):
-    model= Disciplina
-    fields= '__all__'
+    class Meta:
+        model= Disciplina
+        fields= '__all__'
 
 class ReservaAmbienteSerializer(serializers.ModelSerializer):
-    model= ReservaAmbiente
-    fields= '__all__'
+    class Meta:
+        model= ReservaAmbiente
+        fields= '__all__'
 
 class LoginSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
