@@ -37,6 +37,15 @@ class ReservaAmbienteSerializer(serializers.ModelSerializer):
         model= ReservaAmbiente
         fields= '__all__'
 
+    def create(self, validated_data):
+        reservas = ReservaAmbiente.objects.all()
+        data_inicio = validated_data['data_inicio']
+        data_termino = validated_data['data_termino']
+        sala= validated_data['sala']
+        if reservas.filter(data_inicio__lte = data_inicio, data_termino__gte= data_termino, sala = sala).exists():
+            raise serializers.ValidationError("Essa sala já está reservada!")
+        return super().create(validated_data)
+
 class LoginSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data= super().validate(attrs)
@@ -47,3 +56,4 @@ class LoginSerializer(TokenObtainPairSerializer):
         return data
     
 
+ 

@@ -78,7 +78,7 @@ class Listsalas(ListAPIView):
     def get_queryset(self):
         return ReservaAmbiente.objects.filter(professor_responsavel= self.request.user)
    
-    permission_classes= [IsUsuario]
+    permission_classes= [IsUsuario] 
 
 
 #Visualização de disciplinas por Professores
