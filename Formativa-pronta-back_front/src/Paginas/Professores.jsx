@@ -79,6 +79,21 @@ export function Professores() {
   }
 
   async function salvarProfessor() {
+    if (password && password.length < 8) {
+      alert("A senha deve ter pelo menos 8 caracteres.");
+      return;
+    }
+
+    if (!/^\d+$/.test(ni)) {
+      alert("O NI deve conter apenas números.");
+      return;
+    }
+
+    if (username.trim().length < 3) {
+      alert("O nome de usuário deve ter pelo menos 3 caracteres.");
+      return;
+    }
+
     try {
       const dados = {
         username,
@@ -122,7 +137,13 @@ export function Professores() {
         "Erro ao salvar professor:",
         error.response?.data || error.message
       );
-      alert("Erro ao salvar professor.");
+      const mensagens = error.response?.data;
+      if (mensagens && typeof mensagens === "object") {
+        const erros = Object.values(mensagens).flat().join("\n");
+        alert("Erro ao salvar professor:\n" + erros);
+      } else {
+        alert("Erro ao salvar professor.");
+      }
     }
   }
 

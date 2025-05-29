@@ -5,25 +5,39 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields= '__all__'
+        fields = '__all__'
+
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError("A senha deve ter pelo menos 8 caracteres.")
+        if value.isdigit():
+            raise serializers.ValidationError("A senha não pode conter apenas números.")
+        return value
+
+    def validate_ni(self, value):
+        if not str(value).isdigit():
+            raise serializers.ValidationError("O NI deve conter apenas números.")
+        return value
 
     def create(self, validated_data):
-       usuario = Usuario.objects.create_user(
-           username=validated_data['username'],
-           categoria=validated_data['categoria'],
-           ni=validated_data['ni'],
-           telefone= validated_data['telefone'],
-           password= validated_data['password']
-       )
-       return usuario
+        usuario = Usuario.objects.create_user(
+            username=validated_data['username'],
+            categoria=validated_data['categoria'],
+            ni=validated_data['ni'],
+            telefone=validated_data['telefone'],
+            password=validated_data['password']
+        )
+        return usuario
 
     def update(self, instance, validated_data):
-        salvar_senha= validated_data.pop('password', None)
+        salvar_senha = validated_data.pop('password', None)
 
         for chave, valor in validated_data.items():
             setattr(instance, chave, valor)
-        
-        instance.set_password(salvar_senha)
+
+        if salvar_senha:
+            instance.set_password(salvar_senha)
+
         instance.save()
         return instance
 
@@ -34,7 +48,7 @@ class DisciplinaSerializer(serializers.ModelSerializer):
     
     def validate_nome(self, value):
         if self.instance:
-         if Disciplina.objects.filter(nome__iexact=value).exclude(pk=self.instance.pk).exists():
+            if Disciplina.objects.filter(nome__iexact=value).exclude(pk=self.instance.pk).exists():
                 raise serializers.ValidationError("Essa disciplina já está cadastrada.")
         else:
             if Disciplina.objects.filter(nome__iexact=value).exists():
@@ -85,6 +99,3 @@ class LoginSerializer(TokenObtainPairSerializer):
             'id' : self.user.id
         }
         return data
-    
-
- 
