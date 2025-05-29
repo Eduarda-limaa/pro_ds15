@@ -1,0 +1,23 @@
+
+.conteiner {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    width: 1200px;
+    height: 100px;
+    background-color: #FFADDE;
+    padding: 10px;
+    border-radius: 12px;
+    margin: 20px auto;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+  }
+  
+  .logoImg{
+    height: 70px;
+  }

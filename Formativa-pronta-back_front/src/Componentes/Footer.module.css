@@ -1,0 +1,14 @@
+.container {
+  background-color: #FFADDE;
+  color: #000000;
+  text-align: center;
+  padding: 40px 10px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.logo{
+  height: 50px;  
+}
+
+

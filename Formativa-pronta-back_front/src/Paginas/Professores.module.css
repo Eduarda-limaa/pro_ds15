@@ -1,0 +1,162 @@
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tabela thead {
+  background-color: #FFADDE;
+  color: black;
+}
+
+.tabela th, .tabela td {
+  padding: 12px;
+  text-align: left;
+  border: 0.3px solid #ddd;
+}
+
+.tabela tr:nth-child(even) {
+  background-color: #f4f7fa;
+}
+
+/* --- Novos estilos para modal e botões --- */
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Caixa do Modal */
+.modal {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Labels e inputs dentro do modal */
+.modal label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 1px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Botões do modal */
+.modalBotoes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.botaoSalvar {
+  background-color: #CD0267;
+  border: none;
+  color: white;
+  padding: 9px 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botaoSalvar:hover {
+  background-color: #e85e8c;
+}
+
+.botaoCancelar {
+  background-color: #ddd;
+  border: none;
+  color: #444;
+  padding: 9px 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botaoCancelar:hover {
+  background-color: #c5c5c5;
+}
+
+/* Botões de ação na tabela (editar, excluir) */
+.botaoAcao {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #CD0267;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.botaoAcao:hover {
+  color:#FFADDE;
+}
+
+/* Botão criar nova disciplina */
+.botaoCriar {
+  background-color: #CD0267;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+
+
+.Selecao{
+  padding: 6px;
+  border: none;
+  border: 1px solid #ccc;
+  color: #444;
+  border-radius: 5px;
+  margin: 11px;
+}
