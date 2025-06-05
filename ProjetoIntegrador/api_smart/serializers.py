@@ -16,4 +16,3 @@ class HistoricoSerializer(serializers.ModelSerializer):
     class Meta:
         model= Historico
         fields= '__all__'
-        depth= 1
