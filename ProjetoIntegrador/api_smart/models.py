@@ -14,9 +14,9 @@ class Sensores(models.Model):
 
 class Ambientes(models.Model):
     sig= models.IntegerField()
-    descricao= models.CharField(max_length=30)
-    ni= models.CharField(max_length=10)
-    responsavel= models.CharField(max_length=20)
+    descricao= models.TextField()
+    ni= models.CharField(max_length=20)
+    responsavel= models.CharField(max_length=50)
 
     def __str__(self):
         return f"O responsavel do ambiente é {self.responsavel} e o ni é {self.ni}"
