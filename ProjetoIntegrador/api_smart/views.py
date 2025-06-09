@@ -9,7 +9,7 @@ import pandas as pd
 from rest_framework.views import APIView
 
 
-#lista e criação de sensores
+#Lista e criação de sensores. Permite filtragem por unidade de medida
 class ListCreateSensores(ListCreateAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= SensoresSerializer
@@ -18,14 +18,14 @@ class ListCreateSensores(ListCreateAPIView):
     filterset_fields= ['unidade_med']
 
 
-#consulta, atualização e delete para dados dos sensores
+#Consulta, atualização e delete para dados des sensores específico
 class RetrieveUpdateDestroySensores(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= SensoresSerializer
     queryset= Sensores.objects.all()
 
 
-#lista e criação de Ambientes
+#Lista e criação de Ambientes. Permite filtragem pelo "sig"
 class ListCreateAmbientes(ListCreateAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= AmbientesSerializer
@@ -34,13 +34,14 @@ class ListCreateAmbientes(ListCreateAPIView):
     filterset_fields= ['sig']
 
 
-#consulta, atualização e delete para dados dos ambientes
+#Consulta, atualização e delete para dados dos ambientes específicos
 class RetrieveUpdateDestroyAmbientes(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= AmbientesSerializer
     queryset= Ambientes.objects.all()
 
-#lista e criação de Historico
+#Lista e criação de Historico.
+#Filtro para selecionar dados especificos como sensor, timestamp e id
 class ListCreateHistorico(ListCreateAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= HistoricoSerializer
@@ -51,16 +52,16 @@ class ListCreateHistorico(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
 
-#consulta, atualização e delete para dados dos historicos
+#Consulta, atualização e delete para dados dos historicos específicos
 class RetrieveUpdateDestroyHistorico(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= HistoricoSerializer
     queryset= Historico.objects.all()
 
     
-# exportar arquivo do ambiente
+# Exporta um arquivo excel dos dados do Sensor
 class ExportarSensor(APIView):
-    # permission_classes= [IsAuthenticated]
+    permission_classes= [IsAuthenticated]
     def get(self, request): 
         sensor= Sensores.objects.all()
 
@@ -88,9 +89,9 @@ class ExportarSensor(APIView):
 
 
 
-# exportar arquivo do ambiente
+# Exporta um arquivo excel dos dados do Ambiente
 class ExportarAmbiente(APIView):
-    # permission_classes= [IsAuthenticated]
+    permission_classes= [IsAuthenticated]
     def get(self, request): 
         ambientes= Ambientes.objects.all()
 
@@ -115,9 +116,9 @@ class ExportarAmbiente(APIView):
         return response
     
 
-#funcao que exporta os dados de historico 
+# Exporta um arquivo excel dos dados do Historico
 class ExportarHistorico(APIView):
-    # permission_classes= [IsAuthenticated]
+    permission_classes= [IsAuthenticated]
 
     def get(self, request): 
         historicos= Historico.objects.select_related('sensor', 'ambiente').all()

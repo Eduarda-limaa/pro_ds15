@@ -4,6 +4,11 @@ import pandas as pd
 from tablib import Dataset
 from .resources import SensorResource, AmbienteResource, HistoricoResource
 
+# Arquivo responsável por importar dados de sensores, ambientes e histórico a partir de arquivos Excel 
+# Esses arquivos são processados e convertidos para um formato compatível com o Import-Export
+# Os dados são importados usando seus resources (SensorResource, AmbienteResource, HistoricoResource)
+# No caso de erro durante a importação, uma mensagem é retornada com os detalhes
+
 class ImportarSensores(generics.GenericAPIView):
     parser_classes= [parsers.MultiPartParser]
 
