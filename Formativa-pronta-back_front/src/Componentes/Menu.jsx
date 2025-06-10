@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import estilo from "./Menu.module.css";
 
+// Componente que organiza todo o conteudo que deve aparecer na home, separando os por categorias
 export function Menu() {
   if (localStorage.getItem('categoria') == 'G'){
     return (

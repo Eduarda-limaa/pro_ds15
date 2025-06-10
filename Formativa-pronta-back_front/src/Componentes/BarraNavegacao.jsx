@@ -2,6 +2,7 @@ import estilo from "./BarraNavegacao.module.css";
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png';
 
+
 export function BarraNavegacao() {
   return (
     <nav className={estilo.conteiner}>

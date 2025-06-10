@@ -13,7 +13,7 @@ class Sensores(models.Model):
         return f"O status está {self.status} e o sensor é {self.sensor}"
 
 class Ambientes(models.Model):
-    sig= models.IntegerField()
+    sig= models.IntegerField(unique=True)
     descricao= models.TextField()
     ni= models.CharField(max_length=20)
     responsavel= models.CharField(max_length=50)

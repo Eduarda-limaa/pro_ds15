@@ -23,6 +23,7 @@ class RetrieveUpdateDestroySensores(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= SensoresSerializer
     queryset= Sensores.objects.all()
+    
 
 
 #Lista e criação de Ambientes. Permite filtragem pelo "sig"
