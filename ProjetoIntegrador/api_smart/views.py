@@ -18,7 +18,8 @@ class ListCreateSensores(ListCreateAPIView):
     filterset_fields= ['unidade_med']
 
 
-#Consulta, atualização e delete para dados des sensores específico
+#Consulta, atualização e delete
+#  para dados des sensores específico
 class RetrieveUpdateDestroySensores(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= SensoresSerializer
@@ -62,7 +63,7 @@ class RetrieveUpdateDestroyHistorico(RetrieveUpdateDestroyAPIView):
     
 # Exporta um arquivo excel dos dados do Sensor
 class ExportarSensor(APIView):
-    permission_classes= [IsAuthenticated]
+    # permission_classes= [IsAuthenticated]
     def get(self, request): 
         sensor= Sensores.objects.all()
 
