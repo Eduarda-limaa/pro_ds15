@@ -19,7 +19,7 @@ class ListCreateSensores(ListCreateAPIView):
 
 
 #Consulta, atualização e delete
-#  para dados des sensores específico
+#  para dados de sensores específico
 class RetrieveUpdateDestroySensores(RetrieveUpdateDestroyAPIView):
     permission_classes= [IsAuthenticated]
     serializer_class= SensoresSerializer
